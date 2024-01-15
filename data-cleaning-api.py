@@ -56,7 +56,20 @@ def text_processing():
     json_response = {
         'status_code': 200,
         'description': "hasil text yang telah di proses",
-        'data': re.sub(r'[^a-zA-Z0-9]', ' ', text),
+        
+        # mengcovert menjadi lowercase
+        
+        # menghilangkan http
+        # menghilangkan random url
+        # menghilangkan symbol    
+        
+        # menghilangkan user tag    
+        'data': re.sub('user', ' ', text),
+        # menghilangkan "rt" tag    
+        'data': re.sub('rt', ' ', text),   
+        # menghilangkan tab
+        'data': re.sub('\t', ' ', text),
+        'data': re.sub(r'[^a-zA-Z0-9]', ' ', text), 
     }
 
     response_data = jsonify(json_response)

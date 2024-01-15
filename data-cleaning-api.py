@@ -58,18 +58,19 @@ def text_processing():
         'description': "hasil text yang telah di proses",
         
         # mengcovert menjadi lowercase
-        
+        'data': text.lower(), 
         # menghilangkan http
+        'data': re.sub(r'[https:/]', ' ', text),
         # menghilangkan random url
         # menghilangkan symbol    
-        
+        'data': re.sub(r'[^a-zA-Z0-9]', ' ', text),
         # menghilangkan user tag    
         'data': re.sub('user', ' ', text),
         # menghilangkan "rt" tag    
         'data': re.sub('rt', ' ', text),   
         # menghilangkan tab
         'data': re.sub('\t', ' ', text),
-        'data': re.sub(r'[^a-zA-Z0-9]', ' ', text), 
+       
     }
 
     response_data = jsonify(json_response)
